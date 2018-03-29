@@ -15,6 +15,8 @@ val cChar: Char = '\u000f'
  * \\ 反斜杠
  * \$ 美元符号
  *
+ *
+ * Kotlin不可隐式转换
  * */
 
 fun main(args: Array<String>) {
