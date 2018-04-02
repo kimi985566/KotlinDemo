@@ -12,7 +12,7 @@ fun main(args: Array<String>) {
             val arg1 = splits[0].toDouble()
             val opt = splits[1]
             val arg2 = splits[2].toDouble()
-            println("$arg1 $opt $arg2 = ${Operate(opt).apply(arg1, arg2)}")
+            println("$arg1 $opt $arg2 = ${Operate(opt)(arg1, arg2)}")
         } catch (e: NumberFormatException) {
             println("您确定输入的是数字吗？")
         } catch (e: IllegalArgumentException) {
@@ -31,6 +31,9 @@ fun main(args: Array<String>) {
 }
 
 class Operate(op: String) {
+    /**
+     * 主构造器的参数不仅可以用init块中，还可以用于对类属性的初始化
+     * */
     val OpFun: (left: Double, Right: Double) -> Double
 
     init {
@@ -46,7 +49,7 @@ class Operate(op: String) {
         }
     }
 
-    fun apply(left: Double, Right: Double): Double {
-        return OpFun(left, Right)
+    operator fun invoke(left: Double, right: Double): Double {
+        return OpFun(left, right)
     }
 }
