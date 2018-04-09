@@ -165,7 +165,7 @@ public class TreeUtils {
         }
 
         while (!output.isEmpty()) {
-            System.out.print(output.pop().data + " ");
+            System.out.print(output.pop().data + "  ");
         }
     }
 
