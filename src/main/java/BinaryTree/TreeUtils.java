@@ -3,6 +3,7 @@ package BinaryTree;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 import java.util.concurrent.ArrayBlockingQueue;
 
 public class TreeUtils {
@@ -80,7 +81,92 @@ public class TreeUtils {
     }
 
     public static void preorderTraversal(TreeNode root) {
-        //TODO:非递归
+        if (root == null) {
+            return;
+        }
+
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+
+        while (!stack.isEmpty()) {
+            TreeNode cur = stack.pop();
+            System.out.print(cur.data + " ");
+
+            if (cur.right != null) {
+                stack.push(cur.right);
+            }
+
+            if (cur.left != null) {
+                stack.push(cur.left);
+            }
+        }
+    }
+
+    public static void inorderTraversalRec(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        inorderTraversalRec(root.left);
+        System.out.print(root.data + " ");
+        inorderTraversalRec(root.right);
+    }
+
+    public static void inorderTraversal(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode cur = root;
+        if (cur != null) {
+            while (!stack.isEmpty() || cur != null) {
+                if (cur != null) {
+                    stack.push(cur);
+                    cur = cur.left;
+                } else {
+                    cur = stack.pop();
+                    System.out.print(cur.data + " ");
+                    cur = cur.right;
+                }
+            }
+        }
+    }
+
+    public static void postorderTraversalRec(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+
+        postorderTraversalRec(root.left);
+        postorderTraversalRec(root.right);
+        System.out.print(root.data + " ");
+    }
+
+    public static void postorderTraversal(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+
+        Stack<TreeNode> stack = new Stack<>();
+        Stack<TreeNode> output = new Stack<>();
+
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            TreeNode cur = stack.pop();
+            output.push(cur);
+
+            if (cur.left != null) {
+                output.push(cur.left);
+            }
+
+            if (cur.right != null) {
+                output.push(cur.right);
+            }
+        }
+
+        while (!output.isEmpty()) {
+            System.out.print(output.pop().data + " ");
+        }
     }
 
 }
