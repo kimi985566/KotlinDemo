@@ -1,8 +1,25 @@
 package chapter5
 
 fun main(args: Array<String>) {
-    Tag("html").apply {
-        properties["id"] = "HtmlId"
-        children.add(Tag("head"))
+    html {
+        "id"("HtmlId")
+        "head"{
+            "id"("headId")
+        }
+        body {
+            id = "bodyId"
+            `class` = "bodyClass"
+
+            "a"{
+                "href"("https://www.kotliner.cn")
+                +"Kotlin 中文博客"
+            }
+        }
+
+        "div"{
+
+        }
+
+
     }.render().let(::println)
 }
