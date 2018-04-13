@@ -8,7 +8,14 @@ import cn.kotliner.coroutine.common.log
 import javax.swing.JFrame.EXIT_ON_CLOSE
 
 /**
- * Created by benny on 5/20/17.
+ * 协程的执行流程
+ *
+ * 携程被编译成状态机
+ * suspend函数即状态转移
+ *
+ * 正常结果通过resume返回
+ * 异常通过resumeWithException抛出
+ *
  */
 const val LOGO_URL = "http://www.imooc.com/static/img/index/logo.png?t=1.1"
 
@@ -31,7 +38,7 @@ fun main(args: Array<String>) {
                 }
                 log("拿到图片")
                 frame.setLogo(imageData)
-            } catch(e: Exception) {
+            } catch (e: Exception) {
                 e.printStackTrace()
             }
         }

@@ -2,9 +2,7 @@ package cn.kotliner.coroutine.sequence
 
 import kotlin.coroutines.experimental.buildSequence
 
-/**
- * Created by benny on 5/29/17.
- */
+
 fun main(args: Array<String>) {
     for (i in fibonacci){
         println(i)
